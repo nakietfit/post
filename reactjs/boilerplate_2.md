@@ -276,3 +276,56 @@ const client = {
 ```
 
 # [SOURCE](https://medium.freecodecamp.org/how-to-build-your-own-react-boilerplate-2f8cbbeb9b3f)
+
+# ERROR
+## 1
+---
+```bash
+npm run build
+```
+
+```
+Module build failed: Error: Plugin/Preset files are not allowed to export objects, only functions
+```
+---
+
+```bash
+npm i @babel/preset-env --save-dev
+npm i @babel/preset-react --save-dev
+```
+
+***`.babelrc`***
+
+```json
+{
+  "presets": ["@babel/preset-env", "@babel/preset-react"]
+}
+```
+
+## 2
+
+---
+```bash
+npm test
+```
+
+```
+ReferenceError: regeneratorRuntime is not defined
+```
+---
+
+```bash
+npm install --save @babel/runtime 
+npm install --save-dev @babel/plugin-transform-runtime
+```
+
+***`.babelrc`***
+
+```json
+{
+  "presets": ["@babel/preset-env", "@babel/preset-react"],
+  "plugins": [
+    ["@babel/transform-runtime"]
+  ]
+}
+```
